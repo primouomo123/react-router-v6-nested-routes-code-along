@@ -11,10 +11,14 @@ function App() {
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} /> {/* I can use path="" as well to keep it relative to the parent*/}
+            <Route path="" element={<Home />} > {/* If this were a leaf route (a route with no children,
+            I could have used the index attribute like this <Route index element={<Home />} to match the 
+            parent route. index attribute only works with childless routes */}
+              <Route path="profile/:id" element={<UserProfile />} />
+            </Route>
+            
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
-            <Route path="profile/:id" element={<UserProfile />} />
             <Route path="*" element={<ErrorPage />}/>
           </Route>
       </Routes>
